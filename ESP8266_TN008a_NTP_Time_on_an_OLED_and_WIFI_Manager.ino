@@ -94,7 +94,7 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
   int tm_mon  = ((tm_day * 12) + 6)/367;
   int tm_mday = tm_day + 1 - ((tm_mon * 367) + 5)/12;
   current_day = tm_mday; // Returns e.g. 14 (of September)
-
+  
   // Check day light saving rule. The UK uses 0100 on the last Sunday in March -> +1 hour forward and 0200 on the last Sunday in October -> -1 hour back
   // Time from the NTP server is always received in UTC
   if ((current_month >= 2 ) && (current_month <= 9)){
@@ -104,22 +104,27 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
     }
     else
     {
-      if ( (current_day-DoW)>25 || (current_day-DoW)<25){ // not perfect as hours have not been implemented
-      DST   = true;
-      hours = hours + 1;
+      DST   = false;
+      if ( (current_month == 2) && ((current_day-DoW)>24)){ // not perfect as hours have not been implemented first calc is for March second is October
+        DST   = true;
+        hours = hours + 1;
+      }
+      if ( (current_month == 9) && ((current_day-DoW)<24)){ // not perfect as hours have not been implemented first calc is for March second is October
+        DST   = true;
+        hours = hours + 1;
       }
     }
   }
   else {
     DST = false;
-  } // See comment blow for US version
+  } // See comment below for US and Australian versions
 
   display.clearDisplay();
   display.setTextSize(1);
   display.setCursor(0,0); // Display size is 10 characters per line and 6 rows when set to size=1
   for (int i = 1; i <= (10-day_of_week[DoW].length())/2; i++) { display.print(" ");} // 10 character screen width
   display.println(day_of_week[DoW]); // Extract and print day of week
-  display.println(" "+String(current_day)+"-"+month_of_year[current_month]+"-"+String(current_year-2000)); // print Day-Month-Year 
+  display.println(" "+String(current_day)+"-"+month_of_year[current_month]+"-"+String(abs(current_year-2000))); // print Day-Month-Year 
   display.setTextSize(2); // Increase text size for time
   display.setCursor(0,17); // Move down a litle and remember location is in pixels not lines!
   if (hours < 10)   display.print("0"+String(hours)); else display.print(String(hours));          // add a leading 0 when hours < 10
@@ -133,21 +138,49 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
   display.display(); //Implement the new screen contents 
 }
 
+/*
   // For the USA DST begins on the second Sunday of March and ends on the first Sunday of November
-  //if ((current_month >= 2 ) && (current_month <= 101)){
-  //  if (current_month > 2 && current_month < 10) {
-  //    DST = true;
-  //    hours = hours + 1;
-  //  }
-  //  else
-  //  {
-  //    if ( (current_day-DoW)>=8 || (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
-  //    DST = true;
-  //    hours = hours + 1;
-  //    }
-  //  }
-  // }
-  //else {
-  //  DST = false;
-  //}
+  if ((current_month >= 2 ) && (current_month <= 10)){
+    if (current_month > 2 && current_month < 10) {
+      DST = true;
+      hours = hours + 1;
+    }
+    else
+    { 
+      DST = false;
+      if (current_month == 2 && (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
+        DST = true;
+        hours = hours + 1;
+      }
+      if (current_month == 10 && (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
+        DST = true;
+        hours = hours + 1;
+      }
+    }
+   }
+  else {
+    DST = false;
+  }
+  
+  // For Australia DST begins on the first Sunday of October and ends on the first Sunday of April
+  if (current_month > 3 || current_month < 9) {
+     DST = true;
+     hours = hours + 1;
+   }
+   else
+   {
+     DST   = false;
+     if ( (current_month == 3) && ((current_day-DoW)<9)){ // not perfect as hours have not been implemented first calc is for March second is October
+       DST   = true;
+       hours = hours + 1;
+     }
+     if ( (current_month == 9) && ((current_day-DoW)<=2)){ // not perfect as hours have not been implemented first calc is for March second is October
+       DST   = true;
+       hours = hours + 1;
+     }
+    }
+  }
+  else {
+    DST = false;
+  }
 
