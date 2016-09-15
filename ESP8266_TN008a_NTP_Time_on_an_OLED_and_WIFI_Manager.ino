@@ -100,14 +100,14 @@ void display_time(){ // Note Ticker called routines cannot update the time!
 
   // Check day light saving rule. The UK uses 0100 on the last Sunday in March -> forward and 0200 on the last Sunday in October -> back
   // Time from the NTP server is always received in UTC
-  if ((current_month >= 3 ) && (current_month <= 10)){
-    if (current_month > 3 && current_month < 10) {
+  if ((current_month >= 2 ) && (current_month <= 9)){
+    if (current_month > 2 && current_month < 9) {
       DST = true;
       hours = hours + 1;
     }
     else
     {
-      if ( (current_day-DoW)>25 && (current_day-DoW)<25){ // not perfect as hours have not been implemented
+      if ( (current_day-DoW)>25 || (current_day-DoW)<25){ // not perfect as hours have not been implemented
       DST = true;
       hours = hours + 1;
       }
@@ -117,14 +117,14 @@ void display_time(){ // Note Ticker called routines cannot update the time!
     DST = false;
   }
   // For the USA DST begins on the second Sunday of March and ends on the first Sunday of November
-  //if ((current_month >= 3 ) && (current_month <= 11)){
-  //  if (current_month > 3 && current_month < 11) {
+  //if ((current_month >= 2 ) && (current_month <= 10)){
+  //  if (current_month > 2 && current_month < 10) {
   //    DST = true;
   //    hours = hours + 1;
   //  }
   //  else
   //  {
-  //    if ( (current_day-DoW)>=8 && (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
+  //    if ( (current_day-DoW)>=8 || (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
   //    DST = true;
   //    hours = hours + 1;
   //    }
