@@ -104,7 +104,7 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
     }
     else
     {
-      if ( (current_day-DoW)>25 && (current_day-DoW)<25){ // not perfect as hours have not been implemented
+      if ( (current_day-DoW)>25 || (current_day-DoW)<25){ // not perfect as hours have not been implemented
       DST   = true;
       hours = hours + 1;
       }
@@ -141,7 +141,7 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
   //  }
   //  else
   //  {
-  //    if ( (current_day-DoW)>=8 && (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
+  //    if ( (current_day-DoW)>=8 || (current_day-DoW)>=6)){ // not perfect as hours have not been implemented
   //    DST = true;
   //    hours = hours + 1;
   //    }
