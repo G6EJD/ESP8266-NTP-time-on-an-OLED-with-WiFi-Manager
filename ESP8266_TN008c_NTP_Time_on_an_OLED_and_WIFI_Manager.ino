@@ -2,7 +2,7 @@
 // ESP8266 Clock displayed on an OLED shield (64x48) using the Network Time Protocol to update every minute
 // (c) D L Bird 2016
 //
-#include <NTPClient.h> // https://github.com/gmag11/NtpClient
+#include <NTPClient.h> https://github.com/arduino-libraries/NTPClient
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <WiFiUdp.h>
