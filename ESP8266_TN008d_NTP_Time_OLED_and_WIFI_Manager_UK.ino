@@ -127,7 +127,7 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
       (current_month == 9 && (current_day-DoW) >  25 && DoW > 0 )  ||
       (current_month == 9 && (current_day-DoW) >  25 && (DoW == 0 && (UTC_hours >= 1) && UTC_hours < 2) )
       && DST == true) DST = false;  // DST ends 1st Sunday of November; 2am
-  
+  // ------------------------------------------------
   if (seconds > 59) minutes = minutes + 1; 
   display.clearDisplay();
   display.setTextSize(1); // Display size is 10 x 6 characters when set to size=1 where font size is 6x6 pixels
