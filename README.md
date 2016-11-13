@@ -1,4 +1,4 @@
-# ESP8266-NTP-time-on-an-OLED-witrh-WiFi-Manager
+# ESP8266-NTP-time-on-an-OLED-with-WiFi-Manager
 AN ESP8266 display accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection
 
 DST adjustment rules have been added to TN008a for the UK and US, but should be easily adaptable for other countries using the same logic.
