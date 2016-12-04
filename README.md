@@ -11,4 +11,11 @@ You need to calculate (Day of Month - DoW) to then determine the minimum value t
 
 Get the NtpClient from here: https://github.com/arduino-libraries/NTPClient
 
+Ensure you have selcted the correct display size, in the adafruit_SSD1306.h file ensure it looks like this:
+#define
+SSD1306_64_48
+//   #define SSD1306_128_64
+//   #define SSD1306_128_32
+//   #define SSD1306_96_16
 
+Use comments to take out the unwated display size, you need 96x48 pixels.
