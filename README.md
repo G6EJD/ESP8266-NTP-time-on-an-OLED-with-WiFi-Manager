@@ -18,4 +18,4 @@ SSD1306_64_48
 //   #define SSD1306_128_32
 //   #define SSD1306_96_16
 
-Then use comments to take out the unwanted display sizes, you need 96x48 pixels.
+Then use comments to take out the unwanted display sizes, you need 96x48 pixels. You will find the correct files in this repository place them in the library folder.
