@@ -228,28 +228,27 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
    
   display.setTextSize(2);  // Increase text size for time display
   display.setCursor(2,17); // Move down a litle and remember location is in pixels not lines!
-  if (AMPM) {
+  if (AMPM) {
     if (hours%12==0) display.print("12");
-    else display.print((hours%12 < 10)||(hours%12==0) ? " " + String(hours%12) : String(hours%12));
+    else
+    { 
+      if (hours%12 < 10) display.print(" " + String(hours%12));
+      else display.print(String(hours%12)); 
+    }
   }
-    else display.print((hours < 10)||(hours%24==0) ? "0" + String(hours%24) : String(hours%24));
-
-  display.print((minutes < 10) ? ":0" + String(minutes%60) : ":"+String(minutes%60));
+  else if ((hours < 10) || (hours%24 == 0)) display.print("0" + String(hours%24)); else display.print(String(hours%24));  
+  if (minutes < 10) display.print(":0" + String(minutes%60); else display.print(String(minutes%60));
   display.fillRect(0,35,63,47,BLACK); // Clear the portion of screen that displays seconds (nn) ready for next update
   display.setTextSize(1);   // Reduce text size to fit in the remaining screen area
  
   if (AMPM) display.setCursor(10,32); else display.setCursor(19,32); // Move down to a position that can accomodate seconds display
-  display.print(((seconds%60) < 10 || seconds%60==0) ? "(0" + String(seconds%60)+") " : "("+String(seconds%60)+") ");
+  if (seconds%60 < 10 || seconds == 0) display.print("(0" + String(seconds%60)+")"); else display.print("("+String(seconds%60)+") ");
   if (AMPM) {
     if (hours%24 < 12) display.print("AM"); else display.print("PM");
   }
   display.setCursor(15,41); // Move down to a position that can accomodate seconds display
-  display.print(DST ? "DST-": "UTC-"); 
-  Serial.println(dstUK);
-  Serial.println(dstUSA);
-  Serial.println(dstAUS);
+  if (DST) display.print("DST-"); else display.print("UTC-"); 
   if (dstUK) display.print("UK"); else if (dstUSA) display.print("USA"); else display.print("AUS"); 
-
   display.display(); //Update the screen
 }
 
