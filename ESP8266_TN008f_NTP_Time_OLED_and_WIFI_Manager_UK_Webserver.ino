@@ -13,7 +13,7 @@
 #include <WiFiManager.h>      //https://github.com/tzapu/WiFiManager
 
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h> // SCL = GPIO5 and SDA = GPIO4
+#include <Adafruit_SSD1306.h> // SCL = GPIO5 and SDA = GPIO4 Driver location: https://github.com/mcauser/Adafruit_SSD1306
 #define  OLED_RESET 0         // GPIO0
 Adafruit_SSD1306 display(OLED_RESET);
 
