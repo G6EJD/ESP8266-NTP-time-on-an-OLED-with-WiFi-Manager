@@ -14,7 +14,7 @@ String   clock_version = "9.0";
 #include <WiFiManager.h>      //https://github.com/tzapu/WiFiManager
 
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h> // SCL = GPIO5 and SDA = GPIO4
+#include <Adafruit_SSD1306.h> // Must the version via the WeMos site under OLED - not the adafruit_ssd1306 version...
 #define  OLED_RESET 0         // GPIO0
 Adafruit_SSD1306 display(OLED_RESET);
 
