@@ -1,7 +1,11 @@
 # ESP8266-NTP-time-on-an-OLED-with-WiFi-Manager
-AN ESP8266 display accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection
+AN ESP8266 display accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection.
+Three versions:
+1. Standard with no alarm.
+2. With Alarm
+3. Standard version using SSD1306 0.96 128x64 I2C display (Vcc, Gnd, SDA, SCL)
 
-DST adjustment rules have been added to TN008a for the UK and US, but should be easily adaptable for other countries using the same logic.
+DST adjustment rules have been refined and now support correct time change-over.
 
 Working out DST change over requires you to determine the range of when a first or last (depends on country and rules used) Sunday occurs, most transitions occur on a Sunday. In the UK the rule is:
 
