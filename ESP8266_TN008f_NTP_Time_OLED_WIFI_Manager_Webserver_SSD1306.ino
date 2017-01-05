@@ -167,6 +167,7 @@ void display_time(){ // Note Ticker called routines cannot get a time update usi
   if (DST) epoch = epoch + 3600;
   epoch = epoch + int(TimeZone * 3600); 
   calcDate();
+  epoch = epoch - int(TimeZone * 3600); 
   if (DST) epoch = epoch - 3600; // needed because DST is calculated in UTC 
   DST = false; // Until calculated otherwise as follows:
   if (dstUK) { // UK DST begins at 0100 on the last Sunday in March and ends at 0200 on the last Sunday in October
