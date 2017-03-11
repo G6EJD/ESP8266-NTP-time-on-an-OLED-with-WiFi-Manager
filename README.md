@@ -1,9 +1,8 @@
 # ESP8266-NTP-time-on-an-OLED-with-WiFi-Manager
-AN ESP8266 display accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection.
-Three versions:
+An ESP8266 displays accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection.
+Two versions:
 1. Standard with no alarm.
 2. With Alarm
-3. Standard version using SSD1306 0.96 128x64 I2C display (Vcc, Gnd, SDA, SCL)
 
 DST adjustment rules have been refined and now support correct time change-over.
 
