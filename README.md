@@ -1,6 +1,6 @@
 # ESP8266-NTP-time-on-an-OLED-with-WiFi-Manager
 
-**** YOU MUST USE THE DISPLAY DRIVER (1306) PROVIDED **** 
+**** YOU MUST USE THE DISPLAY DRIVER (1306) PROVIDED OR USE THE LINK BELOW **** 
 
 An ESP8266 displays accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection.
 Two versions:
