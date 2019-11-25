@@ -3,7 +3,7 @@
 **** YOU MUST USE THE DISPLAY DRIVER (1306) PROVIDED **** 
 
 An ESP8266 displays accurate time using NTP on an OLED display, using the WiFi Manager to make a network connection.
-SO place the sketch and Adafruit_ssd1306.cpp and .h files in the same folder
+So, place the sketch and Adafruit_ssd1306.cpp and .h files in the same folder
 
 DST adjustment rules have been refined and now support correct time change-over.
 
