@@ -99,7 +99,7 @@ void setup() {
 
 void loop() {
   display_time();
-  if (millis() % 60000) UpdateLocalTime();
+  if (millis() % 60000 == 0) UpdateLocalTime();
   server.handleClient();   // Wait for a client to connect and when they do process their requests
 }
 
